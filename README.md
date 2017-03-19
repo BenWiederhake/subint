@@ -3,7 +3,7 @@
 > Operations on a "partial" integer.
 
 This library allows slightly more fluent expressions like
-`subint.of(4).invert(x)` to invert the last 4 bits of an integer,
+`subint.of(4).invert(x)` to invert the last 4 bits of the integer `x`,
 or `subint.of(5).permute(3)` to iterate over all permutations of
 3 bits within the last 5 bits of an integer.
 
@@ -64,9 +64,8 @@ not in writing the code.
 
 ```Rust
 extern crate subint;
-use subint;
 
-for x in subint.of(5).permute(3) {
+for x in subint::of(5).permute(3) {
     // Prints all permutations of 3 bits where only the last 5 bits are considered.
     println!("{:032b}", x);
 }
@@ -79,10 +78,9 @@ FIXME
 ## TODOs
 
 Next up are these:
-* Implement at all
 * Fiddle around and analyse performance with:
     * Struct order?
-    * Avoid storing the mask?
+    * Store the mask instead of recomputing it all the time?
 * Ask people for feedback on:
     * Performance methodology, performance improvements
     * Making it "Idiomatic Rust"
