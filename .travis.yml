@@ -1,0 +1,26 @@
+language: rust
+rust:
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
+  exclude:
+    # Save Travis some work
+    - rust: stable
+      env: MP_TARGET_CONFIG=popcnt
+    - rust: beta
+      env: MP_TARGET_CONFIG=popcnt
+    - rust: beta
+      env: MP_TARGET_CONFIG=native
+env:
+  - MP_TARGET_CONFIG=default
+  - MP_TARGET_CONFIG=popcnt
+  - MP_TARGET_CONFIG=native
+
+before_script:
+  - ./inject_target.sh
+
+after_success:
+  - cargo bench
