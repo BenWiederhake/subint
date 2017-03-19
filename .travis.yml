@@ -21,6 +21,3 @@ env:
 
 before_script:
   - ./inject_target.sh
-
-after_success:
-  - cargo bench
