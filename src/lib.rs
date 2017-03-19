@@ -23,6 +23,7 @@ pub struct Subint {
 }
 
 pub fn of(count: u32) -> Subint {
+    debug_assert!(count <= 32, format!("Out of range: {}", count));
     Subint {
         count: count,
     }
@@ -118,4 +119,25 @@ fn test_perm_for_consuming() {
         perms.push(p);
     }
     assert_eq!(perms, vec![0b001, 0b010, 0b100]);
+}
+
+impl Subint {
+    pub fn invert(&self, v: u32) -> u32 {
+        v ^ raw::mk_ones(self.count)
+    }
+}
+
+#[test]
+fn test_inv() {
+    assert_eq!(0, of(0).invert(0));
+    assert_eq!(0xCAFEBABEu32, of(0).invert(0xCAFEBABEu32));
+    assert_eq!(u32::max_value(), of(32).invert(0));
+    assert_eq!(0x12345678, of(32).invert(0xEDCBA987));
+    assert_eq!(0x1234A987, of(16).invert(0x12345678));
+}
+
+#[test]
+#[should_panic(expected = "Out of range: 33")]
+fn test_of_panic() {
+    of(33);
 }
