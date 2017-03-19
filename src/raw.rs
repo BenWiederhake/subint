@@ -19,7 +19,7 @@ use std;
 
 
 pub fn mk_ones(amount: u32) -> u32 {
-    debug_assert!(amount <= 32, format!("Out of range: {}", amount));
+    debug_assert!(amount <= 32, "Out of range: {}", amount);
 
     // (1u32 << amount) - 1
     /* For 'amount == 0', this would be no problem, but 32 is non-trivial:

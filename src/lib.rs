@@ -23,7 +23,7 @@ pub struct Subint {
 }
 
 pub fn of(count: u32) -> Subint {
-    debug_assert!(count <= 32, format!("Out of range: {}", count));
+    debug_assert!(count <= 32, "Out of range: {}", count);
     Subint {
         count: count,
     }
