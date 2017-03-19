@@ -27,7 +27,7 @@ pub fn mk_ones(amount: u32) -> u32 {
      * but '1u32.wrapping_shl', or any other 'shl', actually first computes
      * 'amount % 32'.  So we transform everything to 64 bit first.
      * Note that this means that it probably won't run as well
-     * on i386 or other 32 bit archs.
+     * on x86 or other 32 bit archs.
      */
     1u64.wrapping_shl(amount).wrapping_sub(1) as u32
 }
