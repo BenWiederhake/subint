@@ -24,9 +24,7 @@ pub struct Subint {
 
 pub fn of(count: u32) -> Subint {
     debug_assert!(count <= 32, "Out of range: {}", count);
-    Subint {
-        count: count,
-    }
+    Subint { count: count }
 }
 
 
@@ -63,7 +61,7 @@ impl Iterator for PermIter {
 
 impl Subint {
     pub fn permute(&self, ones: u32) -> PermIter {
-        PermIter{
+        PermIter {
             subint_count: self.count,
             ones: ones,
             next: raw::mk_ones(ones),

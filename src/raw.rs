@@ -53,7 +53,7 @@ fn test_mk_ones_panic() {
 /// [~seander's bithacks](https://graphics.stanford.edu/~seander/bithacks.html#NextBitPermutation).
 /// Closely related to a
 /// [more general algorithm](https://github.com/BenWiederhake/masked_permute/blob/master/src/raw.rs#L78)
-/// 
+///
 /// All math operations are intended to run very speedily on both 32-bit
 /// and 64-bit hardware.  This is considered the "hot path".
 ///
